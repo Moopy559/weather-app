@@ -1,5 +1,7 @@
 let place = "brisbane";
 let locData = {};
+const searchBar = document.getElementById("searchBar");
+const searchBtn = document.getElementById("searchBtn");
 fetchData();
 
 async function fetchData() {
@@ -26,3 +28,8 @@ async function getRawLocData(location) {
     icon: dataPull.current.condition.icon,
   };
 }
+
+searchBtn.addEventListener("click", () => {
+  place = searchBar.value;
+  fetchData();
+}); //
