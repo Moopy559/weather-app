@@ -28,15 +28,35 @@ h3,
 h4,
 h5 {
   font-family: "Overpass";
-  font-weight: 700;
 }
 
 form {
   margin-top: 4rem;
 }
 
+button {
+  padding: 0.5rem 3rem;
+  border: none;
+  border-radius: 999px;
+  text-transform: uppercase;
+  font-family: "Overpass";
+  font-weight: 300;
+  background-color: var(--accent);
+  color: var(--headertext);
+}
+
+button:hover {
+  background-color: var(--headertext);
+  color: var(--accent);
+  transition: background-color 200ms, color 200ms;
+}
+
+button:not(:hover) {
+  transition: background-color 200ms, color 200ms;
+}
+
 .wrapper {
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
@@ -46,7 +66,7 @@ form {
   padding: 2rem;
   grid-template-columns: 1fr 1fr;
   background-color: var(--primary);
-  border-radius: 5px;
+  border-radius: 20px;
   img {
     width: 100%;
   }
