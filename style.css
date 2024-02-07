@@ -1,17 +1,31 @@
+:root {
+  --text: #02080d;
+  --background: #f4f9fd;
+  --primary: #2182df;
+  --secondary: #c77cec;
+  --accent: #e75dd5;
+}
+
 * {
   outline: solid 1px red;
   margin: 0px;
   padding: 0px;
 }
 
+body {
+  background-color: var(--background);
+}
+
+form {
+  margin-top: 4rem;
+}
+
 .wrapper {
   max-width: 600px;
   margin: 0 auto;
-  background-color: green;
 }
 
 .main {
-  background-color: yellow;
   display: grid;
   margin-top: 4rem;
   padding: 1rem;
