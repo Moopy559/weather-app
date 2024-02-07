@@ -62,8 +62,7 @@ async function getRawAstroData() {
 
 // Takes user input (location) and pulls weather data for that location
 searchBtn.addEventListener("click", () => {
-  place = searchBar.value;
-  searchBar.value = "";
+  submitBtn();
   fetchData();
 });
 
@@ -77,4 +76,16 @@ function updateMainComponent() {
   precip.textContent = `${locWeatherData.current.precip_mm}mm`;
   icon.setAttribute("src", locWeatherData.current.icon);
   icon.setAttribute("alt", `'${locWeatherData.current.text}' Icon`);
+}
+
+searchBar.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    submitBtn();
+    fetchData();
+  }
+});
+
+function submitBtn() {
+  place = searchBar.value;
+  searchBar.value = "";
 }
