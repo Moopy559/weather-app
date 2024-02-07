@@ -45,4 +45,5 @@ function updateMainComponent() {
   summary.textContent = locData.current.text;
   coords.textContent = `${locData.location.name}, ${locData.location.region}`;
   icon.setAttribute("src", locData.current.icon);
+  icon.setAttribute("alt", `'${locData.current.text}' Icon`);
 }
