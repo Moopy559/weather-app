@@ -5,11 +5,13 @@ const searchBtn = document.getElementById("searchBtn");
 const temp = document.querySelector(".stats h2");
 const summary = document.querySelector(".stats h3");
 const coords = document.querySelector(".stats h4");
+const icon = document.querySelector(".main img");
 fetchData();
 
 async function fetchData() {
   await getRawLocData(place);
   console.log(locData);
+  updateMainComponent();
 }
 
 async function getRawLocData(location) {
@@ -37,3 +39,10 @@ searchBtn.addEventListener("click", () => {
   place = searchBar.value;
   fetchData();
 });
+
+function updateMainComponent() {
+  temp.textContent = `${locData.current.temp_c}\u00B0`;
+  summary.textContent = locData.current.text;
+  coords.textContent = `${locData.location.name}, ${locData.location.region}`;
+  icon.setAttribute("src", locData.current.icon);
+}
