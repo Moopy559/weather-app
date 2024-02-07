@@ -60,7 +60,8 @@ button {
   color: var(--headertext);
 }
 
-svg {
+svg,
+img {
   fill: var(--text);
   max-width: 5rem;
 }
@@ -82,6 +83,8 @@ button:not(:hover) {
 
 .main {
   display: grid;
+  justify-items: center;
+  align-items: center;
   margin-top: 4rem;
   padding: 2rem;
   grid-template-columns: 1fr 1fr;
