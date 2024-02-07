@@ -14,13 +14,14 @@ const icon = document.querySelector(".main img");
 fetchData();
 
 async function fetchData() {
-  await getRawLocData(place);
+  await getRawWeatherData(place);
+  await getRawAstroData();
   console.log(locWeatherData);
   updateMainComponent();
 }
 
 // Calls Weather API
-async function getRawLocData(location) {
+async function getRawWeatherData(location) {
   const response = await fetch(
     "http://api.weatherapi.com/v1/current.json?key=adbb17956b384bcfadc00937240502&q=" +
       location,
@@ -43,30 +44,26 @@ async function getRawLocData(location) {
   };
 }
 
-// // Calls Astronomy API
-// async function getRawLocData() {
-//   const response = await fetch(
-//     // TASK: Change the below URL to have a dynamic date at the end
-//     "http://api.weatherapi.com/v1/astronomy.json?key=adbb17956b384bcfadc00937240502&q&q=brisbane&dt=2024-02-07"
-//   );
+// Calls Astronomy API
+async function getRawAstroData() {
+  const response = await fetch(
+    // TASK: Change the below URL to have a dynamic date at the end AND dynamic 'place' variable
+    "http://api.weatherapi.com/v1/astronomy.json?key=adbb17956b384bcfadc00937240502&q&q=brisbane&dt=2024-02-07",
+    { mode: "cors" }
+  );
 
-//   const dataPull = await response.json();
+  const dataPull = await response.json();
 
-//   locAstronomyData.location = {
-//     name: dataPull.location.name,
-//     region: dataPull.location.region,
-//   };
-//   locAstronomyData.current = {
-//     temp_c: dataPull.current.temp_c,
-//     is_day: dataPull.current.is_day,
-//     text: dataPull.current.condition.text,
-//     icon: dataPull.current.condition.icon,
-//   };
-// }
+  locAstronomyData = {
+    sunrise: dataPull.astronomy.astro.sunrise,
+    sunset: dataPull.astronomy.astro.sunset,
+  };
+}
 
 // Takes user input (location) and pulls weather data for that location
 searchBtn.addEventListener("click", () => {
   place = searchBar.value;
+  searchBar.value = "";
   fetchData();
 });
 
@@ -74,6 +71,8 @@ function updateMainComponent() {
   temp.textContent = `${locWeatherData.current.temp_c}\u00B0`;
   summary.textContent = locWeatherData.current.text;
   coords.textContent = `${locWeatherData.location.name}, ${locWeatherData.location.region}`;
+  sunrise.textContent = `Sunrise: ${locAstronomyData.sunrise}`;
+  sunset.textContent = `Sunset: ${locAstronomyData.sunset}`;
   humidity.textContent = `Humidity: ${locWeatherData.current.humidity}%`;
   precip.textContent = `Precip: ${locWeatherData.current.precip_mm}mm`;
   icon.setAttribute("src", locWeatherData.current.icon);
