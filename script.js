@@ -2,6 +2,9 @@ let place = "brisbane";
 let locData = {};
 const searchBar = document.getElementById("searchBar");
 const searchBtn = document.getElementById("searchBtn");
+const temp = document.querySelector(".stats h2");
+const summary = document.querySelector(".stats h3");
+const coords = document.querySelector(".stats h4");
 fetchData();
 
 async function fetchData() {
@@ -29,7 +32,8 @@ async function getRawLocData(location) {
   };
 }
 
+// Takes user input (location) and pulls weather data for that location
 searchBtn.addEventListener("click", () => {
   place = searchBar.value;
   fetchData();
-}); //
+});

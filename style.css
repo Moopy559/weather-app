@@ -1,0 +1,22 @@
+* {
+  outline: solid 1px red;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: green;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  img {
+    width: 100%;
+  }
+}
