@@ -71,10 +71,10 @@ function updateMainComponent() {
   temp.textContent = `${locWeatherData.current.temp_c}\u00B0`;
   summary.textContent = locWeatherData.current.text;
   coords.textContent = `${locWeatherData.location.name}, ${locWeatherData.location.region}`;
-  sunrise.textContent = `Sunrise: ${locAstronomyData.sunrise}`;
-  sunset.textContent = `Sunset: ${locAstronomyData.sunset}`;
-  humidity.textContent = `Humidity: ${locWeatherData.current.humidity}%`;
-  precip.textContent = `Precip: ${locWeatherData.current.precip_mm}mm`;
+  sunrise.textContent = `${locAstronomyData.sunrise}`;
+  sunset.textContent = `${locAstronomyData.sunset}`;
+  humidity.textContent = `${locWeatherData.current.humidity}%`;
+  precip.textContent = `${locWeatherData.current.precip_mm}mm`;
   icon.setAttribute("src", locWeatherData.current.icon);
   icon.setAttribute("alt", `'${locWeatherData.current.text}' Icon`);
 }

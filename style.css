@@ -5,12 +5,12 @@
   --headertext: #ffffff;
   --background: #121417;
   --primary: #1f252e;
-  --secondary: #252d37;
+  --secondary: #1c222a;
   --accent: #fc7614;
 }
 
 * {
-  outline: solid 1px red;
+  /* outline: solid 1px red; */
   margin: 0px;
   padding: 0px;
 }
@@ -54,6 +54,11 @@ button {
   color: var(--headertext);
 }
 
+svg {
+  fill: var(--text);
+  width: 5vw;
+}
+
 button:hover {
   background-color: var(--headertext);
   color: var(--accent);
@@ -74,7 +79,7 @@ button:not(:hover) {
   margin-top: 4rem;
   padding: 2rem;
   grid-template-columns: 1fr 1fr;
-  background-image: linear-gradient(var(--primary), #1c222a);
+  background-image: linear-gradient(var(--primary), var(--secondary));
   border-radius: 10px;
   img {
     width: 100%;
@@ -87,9 +92,18 @@ button:not(:hover) {
 
 .minor {
   display: grid;
-  margin-top: 4rem;
+  margin-top: 1rem;
   grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
   div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
     padding: 2rem;
+    background-image: linear-gradient(var(--primary), var(--secondary));
+    border-radius: 10px;
   }
 }
