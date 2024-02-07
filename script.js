@@ -6,6 +6,10 @@ const searchBtn = document.getElementById("searchBtn");
 const temp = document.querySelector(".stats h2");
 const summary = document.querySelector(".stats h3");
 const coords = document.querySelector(".stats h4");
+const sunrise = document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
+const humidity = document.getElementById("humidity");
+const precip = document.getElementById("precip_mm");
 const icon = document.querySelector(".main img");
 fetchData();
 
@@ -19,7 +23,8 @@ async function fetchData() {
 async function getRawLocData(location) {
   const response = await fetch(
     "http://api.weatherapi.com/v1/current.json?key=adbb17956b384bcfadc00937240502&q=" +
-      location
+      location,
+    { mode: "cors" }
   );
 
   const dataPull = await response.json();
@@ -32,6 +37,8 @@ async function getRawLocData(location) {
     temp_c: dataPull.current.temp_c,
     is_day: dataPull.current.is_day,
     text: dataPull.current.condition.text,
+    humidity: dataPull.current.humidity,
+    precip_mm: dataPull.current.precip_mm,
     icon: dataPull.current.condition.icon,
   };
 }
@@ -67,6 +74,8 @@ function updateMainComponent() {
   temp.textContent = `${locWeatherData.current.temp_c}\u00B0`;
   summary.textContent = locWeatherData.current.text;
   coords.textContent = `${locWeatherData.location.name}, ${locWeatherData.location.region}`;
+  humidity.textContent = `Humidity: ${locWeatherData.current.humidity}%`;
+  precip.textContent = `Precip: ${locWeatherData.current.precip_mm}mm`;
   icon.setAttribute("src", locWeatherData.current.icon);
   icon.setAttribute("alt", `'${locWeatherData.current.text}' Icon`);
 }

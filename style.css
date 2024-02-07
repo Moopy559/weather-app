@@ -10,7 +10,7 @@
 }
 
 * {
-  /* outline: solid 1px red; */
+  outline: solid 1px red;
   margin: 0px;
   padding: 0px;
 }
@@ -74,7 +74,7 @@ button:not(:hover) {
   margin-top: 4rem;
   padding: 2rem;
   grid-template-columns: 1fr 1fr;
-  background-color: var(--primary);
+  background-image: linear-gradient(var(--primary), #1c222a);
   border-radius: 10px;
   img {
     width: 100%;
