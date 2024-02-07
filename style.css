@@ -1,15 +1,16 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400");
+@import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-  --text: #02080d;
-  --background: #f4f9fd;
-  --primary: #2182df;
-  --secondary: #c77cec;
-  --accent: #e75dd5;
+  --text: #959eac;
+  --headertext: #ffffff;
+  --background: #121417;
+  --primary: #1f252e;
+  --secondary: #252d37;
+  --accent: #fc7614;
 }
 
 * {
-  outline: solid 1px red;
+  /* outline: solid 1px red; */
   margin: 0px;
   padding: 0px;
 }
@@ -17,7 +18,7 @@
 body {
   background-color: var(--background);
   color: var(--text);
-  font-family: "Poppins", sans-serif;
+  font-family: "Overpass";
   font-weight: 400;
 }
 
@@ -26,7 +27,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Poppins";
+  font-family: "Overpass";
   font-weight: 700;
 }
 
@@ -51,6 +52,7 @@ form {
   }
   h2 {
     font-size: 5rem;
+    color: var(--headertext);
   }
 }
 
