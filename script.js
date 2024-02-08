@@ -1,6 +1,13 @@
 let place = "brisbane";
 let locWeatherData = {};
 let locAstronomyData = {};
+let todaysDate = (function getTodaysDate() {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+})();
 const searchBar = document.getElementById("searchBar");
 const searchBtn = document.getElementById("searchBtn");
 const temp = document.querySelector(".stats h2");
@@ -15,8 +22,7 @@ fetchData();
 
 async function fetchData() {
   await getRawWeatherData(place);
-  await getRawAstroData();
-  console.log(locWeatherData);
+  await getRawAstroData(place, todaysDate);
   updateMainComponent();
 }
 
@@ -45,10 +51,12 @@ async function getRawWeatherData(location) {
 }
 
 // Calls Astronomy API
-async function getRawAstroData() {
+async function getRawAstroData(location, date) {
   const response = await fetch(
-    // TASK: Change the below URL to have a dynamic date at the end AND dynamic 'place' variable
-    "http://api.weatherapi.com/v1/astronomy.json?key=adbb17956b384bcfadc00937240502&q&q=brisbane&dt=2024-02-07",
+    "http://api.weatherapi.com/v1/astronomy.json?key=adbb17956b384bcfadc00937240502&q=" +
+      location +
+      "&dt=" +
+      date,
     { mode: "cors" }
   );
 
