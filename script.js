@@ -29,7 +29,7 @@ async function fetchData() {
 // Calls Weather API
 async function getRawWeatherData(location) {
   const response = await fetch(
-    "http://api.weatherapi.com/v1/current.json?key=adbb17956b384bcfadc00937240502&q=" +
+    "https://api.weatherapi.com/v1/current.json?key=adbb17956b384bcfadc00937240502&q=" +
       location,
     { mode: "cors" }
   );
@@ -53,7 +53,7 @@ async function getRawWeatherData(location) {
 // Calls Astronomy API
 async function getRawAstroData(location, date) {
   const response = await fetch(
-    "http://api.weatherapi.com/v1/astronomy.json?key=adbb17956b384bcfadc00937240502&q=" +
+    "https://api.weatherapi.com/v1/astronomy.json?key=adbb17956b384bcfadc00937240502&q=" +
       location +
       "&dt=" +
       date,
